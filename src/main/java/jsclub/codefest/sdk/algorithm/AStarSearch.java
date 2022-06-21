@@ -4,15 +4,15 @@ import jsclub.codefest.sdk.socket.data.Node;
 import java.util.*;
 
 public class AStarSearch extends BaseAlgorithm{
-    String aStarSearch(int[][] matrix, int startX, int startY, int endX, int endY, int numOfSteps) {
+    String aStarSearch(int[][] matrix, List<Node> restrictNode, int startX, int startY, int endX, int endY, int numOfSteps) {
         Node start = new Node(startX, startY);
         Node end = new Node(endX, endY);
 
-        Stack<Node> steps =  aStarSearch(matrix, start, end);
+        Stack<Node> steps =  aStarSearch(matrix, restrictNode, start, end);
         return getStepsInString(start, steps, numOfSteps);
     }
 
-    Stack<Node> aStarSearch(int[][] matrix, Node start, Node target) {
+    Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
         int mMapWidth = matrix.length;
         int mMapHeight = matrix[0].length;
 
@@ -55,7 +55,7 @@ public class AStarSearch extends BaseAlgorithm{
                 // in the closed list, then no action is taken and the next Node continues to be
                 // examined;
                 if (
-                    (!n.equals(target) && !this.isValidNode(matrix, n))
+                    (!n.equals(target) && !this.isValidNode(matrix, n, restrictNode))
                     || closeList.contains(n)
                     || n.getX() > mMapWidth
                     || n.getX() < 1
@@ -113,7 +113,11 @@ public class AStarSearch extends BaseAlgorithm{
         return new Stack<>();
     }
 
-    Boolean isValidNode(int[][] matrix, Node n) {
-        return matrix[n.getX()][n.getY()] == 0;
+    Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
+        if (matrix[n.getX()][n.getY()] == 0) {
+            return true;
+        }
+
+        return !restrictNode.contains(n);
     }
 }
