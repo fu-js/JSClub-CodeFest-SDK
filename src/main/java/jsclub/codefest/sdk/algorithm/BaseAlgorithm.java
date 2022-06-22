@@ -21,10 +21,10 @@ public class BaseAlgorithm {
     int manhattanDistance(Position src, Position des) {
         return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
     }
-    String getStepsInString(Node first, Stack<Node> path, int numOfSteps) {
+    String getStepsInString(Node first, Stack<Node> path) {
         StringBuilder steps = new StringBuilder();
         Node previousStep = first;
-        int size = numOfSteps == ClientConfig.GO_FULL_PATH ? path.size() : numOfSteps;
+        int size = path.size();
         for (int i = 0; i <= size; i++) {
             if (path.size() > 0) {
                 Node nextStep = path.pop();

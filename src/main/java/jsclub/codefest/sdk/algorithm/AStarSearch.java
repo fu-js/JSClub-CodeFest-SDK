@@ -2,15 +2,16 @@ package jsclub.codefest.sdk.algorithm;
 
 import jsclub.codefest.sdk.constant.MapEncode;
 import jsclub.codefest.sdk.socket.data.Node;
+import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
 public class AStarSearch extends BaseAlgorithm{
-    String aStarSearch(int[][] matrix, List<Node> restrictNode, int startX, int startY, int endX, int endY, int numOfSteps) {
-        Node start = new Node(startX, startY);
-        Node end = new Node(endX, endY);
+    String aStarSearch(int[][] matrix, List<Node> restrictNode, Position start, Position end) {
+        Node startNode = Node.createFromPosition(start);
+        Node endNode = Node.createFromPosition(end);
 
-        Stack<Node> steps =  aStarSearch(matrix, restrictNode, start, end);
-        return getStepsInString(start, steps, numOfSteps);
+        Stack<Node> steps =  aStarSearch(matrix, restrictNode, startNode, endNode);
+        return getStepsInString(startNode, steps);
     }
 
     Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
