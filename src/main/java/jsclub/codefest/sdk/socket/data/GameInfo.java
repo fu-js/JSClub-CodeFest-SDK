@@ -19,4 +19,9 @@ public class GameInfo {
     public String toString() {
         return new Gson().toJson(this);
     }
+
+    public MapInfo getMap_info() {
+        map_info.getMap();
+        return map_info;
+    }
 }

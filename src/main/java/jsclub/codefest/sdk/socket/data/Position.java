@@ -15,6 +15,11 @@ public class Position {
         return row;
     }
 
+    public Position(int col, int row) {
+        this.col = col;
+        this.row = row;
+    }
+
     public List<Node> getAllPosition(Position currentP, int direction){
         List<Node> allNode = new ArrayList<>();
         if(direction!=0){

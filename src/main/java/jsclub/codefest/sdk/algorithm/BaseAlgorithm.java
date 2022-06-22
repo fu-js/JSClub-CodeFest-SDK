@@ -1,14 +1,9 @@
 package jsclub.codefest.sdk.algorithm;
 
-import jsclub.codefest.sdk.constant.ClientConfig;
-import jsclub.codefest.sdk.model.Bomberman;
 import jsclub.codefest.sdk.socket.data.Node;
 import jsclub.codefest.sdk.socket.data.Dir;
 import jsclub.codefest.sdk.socket.data.Position;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 public class BaseAlgorithm {

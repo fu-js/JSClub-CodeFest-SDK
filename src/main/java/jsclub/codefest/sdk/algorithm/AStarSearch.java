@@ -6,11 +6,16 @@ import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
 public class AStarSearch extends BaseAlgorithm{
-    String aStarSearch(int[][] matrix, List<Node> restrictNode, Position start, Position end) {
+    String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
         Node startNode = Node.createFromPosition(start);
         Node endNode = Node.createFromPosition(end);
 
-        Stack<Node> steps =  aStarSearch(matrix, restrictNode, startNode, endNode);
+        List<Node> restrictNodeList = new ArrayList<Node>();
+        for (Position position : restrictNode) {
+            restrictNodeList.add(Node.createFromPosition(position));
+        }
+
+        Stack<Node> steps =  aStarSearch(matrix, restrictNodeList, startNode, endNode);
         return getStepsInString(startNode, steps);
     }
 

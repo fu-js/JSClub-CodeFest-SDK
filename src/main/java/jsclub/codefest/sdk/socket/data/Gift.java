@@ -6,4 +6,9 @@ public class Gift extends Position {
     public static final String GIFT_T = "T";
 
     public String gift_type;
+
+    public Gift(int col, int row) {
+        super(col, row);
+
+    }
 }

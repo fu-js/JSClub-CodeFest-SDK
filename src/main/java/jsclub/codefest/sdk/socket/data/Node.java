@@ -7,8 +7,7 @@ public class Node extends Position{
     public double V = 1;
 
     public Node(int x, int y) {
-        this.col = x;
-        this.row = y;
+        super(x, y);
     }
 
     public int getF(){

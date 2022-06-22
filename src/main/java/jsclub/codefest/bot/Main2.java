@@ -20,7 +20,7 @@ public class Main2 {
     public static void main(String[] aDrgs) {
         Hero player2 = new Hero("player2-xxx", GameConfig.GAME_ID);
         Emitter.Listener onTickTackListener = objects -> {
-            GameInfo gameInfo = GameUtil.getMapInfo(objects);
+            GameInfo gameInfo = GameUtil.getGameInfo(objects);
 
             player2.move(getRandomPath());
         };

@@ -14,8 +14,8 @@ import org.json.JSONObject;
 
 public class Hero {
     private static final Logger LOGGER = LogManager.getLogger(Hero.class);
-    private static String playerName = "";
-    private static String gameID = "";
+    private String playerName = "";
+    private String gameID = "";
     private Socket socket;
     private Emitter.Listener onTickTackListener = objects -> {};
 
@@ -28,11 +28,11 @@ public class Hero {
         this.onTickTackListener = onTickTackListener;
     }
 
-    public static String getPlayerName() {
+    public String getPlayerName() {
         return playerName;
     }
 
-    public static String getGameID() {
+    public String getGameID() {
         return gameID;
     }
 
