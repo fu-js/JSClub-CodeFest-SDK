@@ -18,9 +18,10 @@ public class MapInfo {
     public List<Viruses> viruses;
     public List<Human> human;
     public List<Position> walls = new ArrayList<>();
-    public List<Position> boxs = new ArrayList<>();
+    public List<Position> balk = new ArrayList<>();
     public List<Position> blank = new ArrayList<>();
-    public List<Position> selfisolatedZone = new ArrayList();
+    public List<Position> teleportGate = new ArrayList();
+    public List<Position> quarantinePlace = new ArrayList();
 
     public Player getPlayerByKey(String key) {
         Player player = null;
@@ -63,25 +64,32 @@ public class MapInfo {
         return nhumanList;
     }
 
-    public int[][] getMap() {
-        int[][] map = new int[size.rows][size.cols];
+    public void updateMapInfo() {
         for (int i = 0; i < size.rows; i++) {
-            map[i] = this.map.get(i);
+            int[] map = this.map.get(i);
             for (int j = 0; j < size.cols; j++) {
-                if (map[i][j] == MapEncode.ROAD) {
-                    blank.add(new Position(j,i));
-                } else if (map[i][j] == MapEncode.WALL) {
-                    walls.add(new Position(j,i));
-                } else if (map[i][j] == MapEncode.BOX) {
-                    boxs.add(new Position(j,i));
-                } else if (map[i][j] == MapEncode.TELEPORT_GATE || map[i][j] == MapEncode.QUARANTINE_PLACE) {
-                    selfisolatedZone.add(new Position(j,i));
-                } else {
-                    walls.add(new Position(j,i));
+                switch (map[j]) {
+                    case MapEncode.ROAD:
+                        blank.add(new Position(j,i));
+                        break;
+                    case MapEncode.WALL:
+                        walls.add(new Position(j,i));
+                        break;
+                    case MapEncode.BALK:
+                        balk.add(new Position(j,i));
+                        break;
+                    case MapEncode.TELEPORT_GATE:
+                        teleportGate.add(new Position(j,i));
+                        break;
+                    case MapEncode.QUARANTINE_PLACE:
+                        quarantinePlace.add(new Position(j,i));
+                        break;
+                    default:
+                        walls.add(new Position(j,i));
+                        break;
                 }
             }
         }
-        return map;
     }
 
     public Position getEnemyPosition(Hero hero) {

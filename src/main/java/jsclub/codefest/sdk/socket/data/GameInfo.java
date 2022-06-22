@@ -21,7 +21,7 @@ public class GameInfo {
     }
 
     public MapInfo getMap_info() {
-        map_info.getMap();
+        map_info.updateMapInfo();
         return map_info;
     }
 }
