@@ -1,5 +1,6 @@
 package jsclub.codefest.sdk.algorithm;
 
+import jsclub.codefest.sdk.constant.MapEncode;
 import jsclub.codefest.sdk.socket.data.Node;
 import java.util.*;
 
@@ -114,8 +115,12 @@ public class AStarSearch extends BaseAlgorithm{
     }
 
     Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
-        if (matrix[n.getX()][n.getY()] == 0) {
+        if (matrix[n.getX()][n.getY()] == MapEncode.ROAD) {
             return true;
+        }
+
+        if (matrix[n.getX()][n.getY()] == MapEncode.WALL) {
+            return false;
         }
 
         return !restrictNode.contains(n);
