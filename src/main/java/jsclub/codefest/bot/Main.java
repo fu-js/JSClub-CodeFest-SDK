@@ -26,7 +26,8 @@ public class Main {
         return sb.toString();
     }
 
-    public static void main(String[] aDrgs) {
+    public static void main(String[] args) {
+        final String SERVER_URL = "https://codefest.jsclub.me/";
         Hero player1 = new Hero("player1-xxx", GameConfig.GAME_ID);
         AStarSearch aStarSearch = new AStarSearch();
 
@@ -35,11 +36,11 @@ public class Main {
             MapInfo mapInfo = gameInfo.getMapInfo();
 
             Position currentPosition = mapInfo.getCurrentPosition(player1);
-            Position enemyPosisiton = mapInfo.getEnemyPosition(player1);
+            Position enemyPosition = mapInfo.getEnemyPosition(player1);
 
             List<Position> restrictPosition =  new ArrayList<Position>();
 
-            String path = aStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosisiton);
+            String path = aStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosition);
 
             // Set path length to 5 if length larger
             // if (path.length() > 5) {
@@ -55,6 +56,6 @@ public class Main {
             player1.move(path);
         };
         player1.setOnTickTackListener(onTickTackListener);
-        player1.connectToServer();
+        player1.connectToServer(SERVER_URL);
     }
 }

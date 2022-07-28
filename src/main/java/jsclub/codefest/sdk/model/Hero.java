@@ -36,12 +36,12 @@ public class Hero {
         return gameID;
     }
 
-    public Boolean connectToServer() {
+    public Boolean connectToServer(String serverUrl) {
         if (socket != null) {
             socket.disconnect();
             socket = null;
         }
-        socket = SocketUtil.init(ServerConfig.SERVER_URL);
+        socket = SocketUtil.init(serverUrl);
 
         if (socket == null) {
             LOGGER.error("Socket null - can't connect");

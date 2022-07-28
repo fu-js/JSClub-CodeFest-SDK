@@ -23,6 +23,7 @@ public class Main2 {
     }
 
     public static void main(String[] aDrgs) {
+        final String SERVER_URL = "https://codefest.jsclub.me/";
         Hero player2 = new Hero("b76461f5-55b2-40ec-b9f2-efbbe74130c7", GameConfig.GAME_ID);
         Emitter.Listener onTickTackListener = objects -> {
             GameInfo gameInfo = GameUtil.getGameInfo(objects);
@@ -30,6 +31,6 @@ public class Main2 {
             player2.move(getRandomPath(10));
         };
         player2.setOnTickTackListener(onTickTackListener);
-        player2.connectToServer();
+        player2.connectToServer(SERVER_URL);
     }
 }
