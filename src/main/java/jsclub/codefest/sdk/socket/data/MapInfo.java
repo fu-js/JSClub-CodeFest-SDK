@@ -75,7 +75,7 @@ public class MapInfo {
         Position position = null;
         if (hero != null) {
             for (Player player : players) {
-                if (!hero.getPlayerName().startsWith(player.id)) {
+                if (!hero.getPlayerID().startsWith(player.id)) {
                     position = player.currentPosition;
                     break;
                 }
@@ -88,7 +88,7 @@ public class MapInfo {
         Position position = null;
         if (hero != null) {
             for (Player player : players) {
-                if (hero.getPlayerName().startsWith(player.id)) {
+                if (hero.getPlayerID().startsWith(player.id)) {
                     position = player.currentPosition;
                     break;
                 }

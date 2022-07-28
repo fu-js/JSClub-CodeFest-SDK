@@ -13,13 +13,13 @@ import org.json.JSONObject;
 
 public class Hero {
     private static final Logger LOGGER = LogManager.getLogger(Hero.class);
-    private String playerName = "";
+    private String playerID = "";
     private String gameID = "";
     private Socket socket;
     private Emitter.Listener onTickTackListener = objects -> {};
 
-    public Hero(String playerName, String gameID) {
-        this.playerName = playerName;
+    public Hero(String playerID, String gameID) {
+        this.playerID = playerID;
         this.gameID = gameID;
     }
 
@@ -27,8 +27,8 @@ public class Hero {
         this.onTickTackListener = onTickTackListener;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public String getPlayerID() {
+        return playerID;
     }
 
     public String getGameID() {
@@ -48,17 +48,17 @@ public class Hero {
         }
 
         socket.on(Socket.EVENT_CONNECT, objects -> {
-            String gameParams = new Game(gameID, playerName).toString();
+            String gameParams = new Game(gameID, playerID).toString();
             try {
                 socket.emit(ServerSocketConfig.JOIN_GAME, new JSONObject(gameParams));
-                LOGGER.info("{} connected into game {}!", this.playerName, this.gameID);
+                LOGGER.info("{} connected into game {}!", this.playerID, this.gameID);
             } catch (JSONException e) {
                 LOGGER.error(e);
             }
         });
         socket.on(ServerSocketConfig.TICKTACK_PLAYER, onTickTackListener);
         socket.on(Socket.EVENT_CONNECT_ERROR, objects -> LOGGER.error("Connect Failed "+ objects[0].toString()));
-        socket.on(Socket.EVENT_DISCONNECT, objects -> LOGGER.info("{} Disconnected!", this.playerName));
+        socket.on(Socket.EVENT_DISCONNECT, objects -> LOGGER.info("{} Disconnected!", this.playerID));
 
         socket.connect();
         return true;
@@ -67,7 +67,7 @@ public class Hero {
     public void move(String step) {
         if (socket != null && step.length() > 0) {
             Dir dir = new Dir(step);
-            LOGGER.debug("Player = {} - Dir = {}", this.playerName, dir);
+            LOGGER.debug("Player = {} - Dir = {}", this.playerID, dir);
             try {
                 socket.emit(ServerSocketConfig.DRIVE_PLAYER, new JSONObject(dir.toString()));
             } catch (JSONException e) {
