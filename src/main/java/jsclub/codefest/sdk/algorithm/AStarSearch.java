@@ -6,7 +6,7 @@ import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
 public class AStarSearch extends BaseAlgorithm{
-    String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
+    public String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
         Node startNode = Node.createFromPosition(start);
         Node endNode = Node.createFromPosition(end);
 
@@ -121,14 +121,13 @@ public class AStarSearch extends BaseAlgorithm{
     }
 
     Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
-        if (matrix[n.getX()][n.getY()] == MapEncode.ROAD) {
-            return true;
+        if (n.getX() >= matrix.length || n.getX() < 0 || n.getY() >= matrix[0].length || n.getY() < 0) {
+            return false;
         }
 
         if (matrix[n.getX()][n.getY()] == MapEncode.WALL) {
             return false;
         }
-
         return !restrictNode.contains(n);
     }
 }

@@ -20,7 +20,7 @@ public class GameInfo {
         return new Gson().toJson(this);
     }
 
-    public MapInfo getMap_info() {
+    public MapInfo getMapInfo() {
         map_info.updateMapInfo();
         return map_info;
     }

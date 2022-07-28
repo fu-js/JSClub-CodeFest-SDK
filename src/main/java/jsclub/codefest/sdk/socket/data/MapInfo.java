@@ -17,6 +17,7 @@ public class MapInfo {
     public List<Gift> gifts;
     public List<Viruses> viruses;
     public List<Human> human;
+    public int[][] mapMatrix;
     public List<Position> walls = new ArrayList<>();
     public List<Position> balk = new ArrayList<>();
     public List<Position> blank = new ArrayList<>();
@@ -65,10 +66,11 @@ public class MapInfo {
     }
 
     public void updateMapInfo() {
+        int[][] mapMatrix = new int[size.rows][size.cols];
         for (int i = 0; i < size.rows; i++) {
-            int[] map = this.map.get(i);
+            mapMatrix[i] = map.get(i);
             for (int j = 0; j < size.cols; j++) {
-                switch (map[j]) {
+                switch (mapMatrix[i][j]) {
                     case MapEncode.ROAD:
                         blank.add(new Position(j,i));
                         break;
@@ -90,6 +92,7 @@ public class MapInfo {
                 }
             }
         }
+        this.mapMatrix = mapMatrix;
     }
 
     public Position getEnemyPosition(Hero hero) {
