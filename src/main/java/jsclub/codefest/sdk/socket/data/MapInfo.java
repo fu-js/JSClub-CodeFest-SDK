@@ -21,8 +21,8 @@ public class MapInfo {
     public List<Position> walls = new ArrayList<>();
     public List<Position> balk = new ArrayList<>();
     public List<Position> blank = new ArrayList<>();
-    public List<Position> teleportGate = new ArrayList();
-    public List<Position> quarantinePlace = new ArrayList();
+    public List<Position> teleportGate = new ArrayList<>();
+    public List<Position> quarantinePlace = new ArrayList<>();
 
     public List<Viruses> getVirus() {
         return viruses;

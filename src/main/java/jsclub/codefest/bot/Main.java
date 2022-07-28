@@ -11,50 +11,35 @@ import jsclub.codefest.sdk.util.GameUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 public class Main {
-    public static String getRandomPath(int length) {
-        Random rand = new Random();
-
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            int random_integer = rand.nextInt(5);
-            sb.append("1234b".charAt(random_integer));
-        }
-
-        return sb.toString();
-    }
-
+    final static String SERVER_URL = "https://codefest.jsclub.me/";
     public static void main(String[] args) {
-        final String SERVER_URL = "https://codefest.jsclub.me/";
+        // Creating a new Hero object with name `player1-xxx` and game id `GameConfig.GAME_ID`.
         Hero player1 = new Hero("player1-xxx", GameConfig.GAME_ID);
+
+        // Creating a new object of AStarSearch class.
         AStarSearch aStarSearch = new AStarSearch();
 
         Listener onTickTackListener = objects -> {
+            // This is getting the game information from the server.
             GameInfo gameInfo = GameUtil.getGameInfo(objects);
             MapInfo mapInfo = gameInfo.getMapInfo();
 
+            // This is getting the current position of the player and the enemy position.
             Position currentPosition = mapInfo.getCurrentPosition(player1);
             Position enemyPosition = mapInfo.getEnemyPosition(player1);
 
+            // This is the A* algorithm. It is used to find the shortest path between two points.
             List<Position> restrictPosition =  new ArrayList<Position>();
-
             String path = aStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosition);
 
-            // Set path length to 5 if length larger
-            // if (path.length() > 5) {
-            //     path = path.substring(0, 5);
-            // }
-
-            // Random if path is empty
-//            if (path.isEmpty()) {
-//                System.out.println("Random path");
-//                path = getRandomPath(5);
-//            }
-
+            // Sending the path to the server.
             player1.move(path);
         };
+
+        // This is the code that connects the player to the server.
         player1.setOnTickTackListener(onTickTackListener);
         player1.connectToServer(SERVER_URL);
     }
