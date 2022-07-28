@@ -23,6 +23,11 @@ public class Hero {
         this.gameID = gameID;
     }
 
+    /**
+     * This function sets the listener for the tick-tack event.
+     * 
+     * @param onTickTackListener This is the listener that will be called when the server sends a tick or a tack.
+     */
     public void setOnTickTackListener(Emitter.Listener onTickTackListener) {
         this.onTickTackListener = onTickTackListener;
     }
@@ -35,6 +40,12 @@ public class Hero {
         return gameID;
     }
 
+    /**
+     * It connects to the server and sets up the listeners for the events that the server will emit
+     * 
+     * @param serverUrl The URL of the server.
+     * @return A boolean value.
+     */
     public Boolean connectToServer(String serverUrl) {
         if (socket != null) {
             socket.disconnect();
@@ -64,6 +75,11 @@ public class Hero {
         return true;
     }
 
+    /**
+     *> The `move` function takes a string as an argument and emits a `DRIVE_PLAYER` event to the server with the string as the data
+     * 
+     * @param step The direction to move the player.
+     */
     public void move(String step) {
         if (socket != null && step.length() > 0) {
             Dir dir = new Dir(step);

@@ -1,8 +1,5 @@
 package jsclub.codefest.sdk.socket.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Position {
     public int col;
     public int row;

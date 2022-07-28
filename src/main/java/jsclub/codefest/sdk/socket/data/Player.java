@@ -15,7 +15,6 @@ public class Player {
     public int pill;
     public int human;
     public int pillUsed;
-//    public String[] gift;
 
     @Override
     public String toString() {

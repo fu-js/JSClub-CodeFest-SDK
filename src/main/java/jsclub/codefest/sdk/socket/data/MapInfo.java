@@ -24,19 +24,6 @@ public class MapInfo {
     public List<Position> teleportGate = new ArrayList();
     public List<Position> quarantinePlace = new ArrayList();
 
-    public Player getPlayerByKey(String key) {
-        Player player = null;
-        if (players != null ) {
-            for (Player p : players) {
-                if (key.startsWith(p.id)) {
-                    player = p;
-                    break;
-                }
-            }
-        }
-        return player;
-    }
-
     public List<Viruses> getVirus() {
         return viruses;
     }
@@ -71,6 +58,12 @@ public class MapInfo {
         this.mapMatrix = mapMatrix;
     }
 
+    /**
+     * It returns the position of the enemy hero
+     * 
+     * @param hero The hero object that you are controlling.
+     * @return The position of the enemy hero.
+     */
     public Position getEnemyPosition(Hero hero) {
         Position position = null;
         if (hero != null) {
@@ -84,6 +77,12 @@ public class MapInfo {
         return position;
     }
 
+    /**
+     * It returns the current position of a hero
+     * 
+     * @param hero The hero object that you want to get the position of.
+     * @return The current position of the hero.
+     */
     public Position getCurrentPosition(Hero hero) {
         Position position = null;
         if (hero != null) {

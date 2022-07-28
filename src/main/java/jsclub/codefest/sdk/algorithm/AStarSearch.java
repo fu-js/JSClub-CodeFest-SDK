@@ -6,6 +6,16 @@ import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
 public class AStarSearch extends BaseAlgorithm{
+    /**
+     * > Given a matrix, a list of restricted nodes, a start node and an end node, return a stack of nodes
+     * that represents the shortest path from the start node to the end node
+     * 
+     * @param matrix the matrix of the maze
+     * @param restrictNode a list of positions that are not allowed to be visited.
+     * @param start the start position
+     * @param end the end position of the path
+     * @return A string of the steps taken to get from the start to the end.
+     */
     public String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
         Node startNode = Node.createFromPosition(start);
         Node endNode = Node.createFromPosition(end);
@@ -19,7 +29,18 @@ public class AStarSearch extends BaseAlgorithm{
         return getStepsInString(startNode, steps);
     }
 
-    Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
+    /**
+     * The open list is the Node that needs to be checked, and the closed list is the Node that has been
+     * checked. The open list is empty, indicating that there is no new Node to add, and there is no end
+     * Node in the tested Node, the path can not be found
+     * 
+     * @param matrix The map matrix, which is a two-dimensional array of integers.
+     * @param restrictNode The Node that can't be passed, such as the wall, the box, the player, etc.
+     * @param start The starting point of the pathfinding
+     * @param target The target Node
+     * @return A stack of nodes.
+     */
+    private Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
         int mMapWidth = matrix.length;
         int mMapHeight = matrix[0].length;
 
@@ -120,7 +141,7 @@ public class AStarSearch extends BaseAlgorithm{
         return new Stack<>();
     }
 
-    Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
+    private Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
         if (n.getX() >= matrix.length || n.getX() < 0 || n.getY() >= matrix[0].length || n.getY() < 0) {
             return false;
         }
