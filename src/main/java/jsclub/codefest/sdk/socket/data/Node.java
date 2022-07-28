@@ -83,24 +83,7 @@ public class Node extends Position{
         return new Node(col,row + step);
     }
 
-    public Node nextPosition(int direction,int step) {
-        switch (direction) {
-            case 1:
-                return leftPosition(step);
-            case 2:
-                return rightPosition(step);
-            case 3:
-                return upPosition(step);
-            case 4:
-                return downPosition(step);
-            default:
-                return null;
-        }
-    }
-
     public static Node createFromPosition(Position position) {
         return new Node(position.col, position.row);
     }
-
-
 }

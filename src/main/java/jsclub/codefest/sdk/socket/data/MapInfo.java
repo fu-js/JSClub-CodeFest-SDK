@@ -41,30 +41,6 @@ public class MapInfo {
         return viruses;
     }
 
-    public List<Human> getDhuman() {
-        List<Human> dhumanList = new ArrayList<>();
-        if(human!=null) {
-            for (Human dhuman : human) {
-                if (dhuman.infected) {
-                    dhumanList.add(dhuman);
-                }
-            }
-        }
-        return dhumanList;
-    }
-
-    public List<Human> getNHuman() {
-        List<Human> nhumanList = new ArrayList<>();
-        if(human!=null) {
-            for (Human nhuman : human) {
-                if (!nhuman.infected && nhuman.curedRemainTime == 0) {
-                    nhumanList.add(nhuman);
-                }
-            }
-        }
-        return nhumanList;
-    }
-
     public void updateMapInfo() {
         int[][] mapMatrix = new int[size.rows][size.cols];
         for (int i = 0; i < size.rows; i++) {
