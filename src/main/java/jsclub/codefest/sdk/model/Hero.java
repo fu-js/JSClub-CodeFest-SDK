@@ -8,7 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import jsclub.codefest.sdk.util.SocketUtil;
-import jsclub.codefest.sdk.constant.ServerConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 
