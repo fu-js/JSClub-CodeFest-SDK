@@ -157,7 +157,11 @@ public class AStarSearch extends BaseAlgorithm{
     public static Map<Position, String> getPathToAllTargets(int[][] matrix, List<Position> restrictNode, Position start, ArrayList<Position> targets) {
         Map<Position, String> result = new HashMap<>();
         for (Position target : targets) {
+            String path = aStarSearch(matrix, restrictNode, start, target);
 
+            if (!path.isEmpty()) {
+                result.put(target, path);
+            }
         }
 
         return result;
