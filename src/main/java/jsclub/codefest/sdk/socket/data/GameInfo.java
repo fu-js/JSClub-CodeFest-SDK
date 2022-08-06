@@ -20,6 +20,11 @@ public class GameInfo {
         return new Gson().toJson(this);
     }
 
+    /**
+     * Update the map info and return it.
+     * 
+     * @return The map_info object is being returned.
+     */
     public MapInfo getMapInfo() {
         map_info.updateMapInfo();
         return map_info;

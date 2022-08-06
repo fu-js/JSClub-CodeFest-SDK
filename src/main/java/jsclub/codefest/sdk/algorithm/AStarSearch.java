@@ -157,6 +157,16 @@ public class AStarSearch extends BaseAlgorithm {
         return !restrictNode.contains(n);
     }
 
+    /**
+     * It takes in a matrix, a list of restricted nodes, a start position, and a list of target positions,
+     * and returns a map of target positions to the path to that target
+     * 
+     * @param matrix the matrix of the map
+     * @param restrictNode a list of positions that the algorithm cannot go through.
+     * @param start The starting position of the agent.
+     * @param targets a list of target positions
+     * @return A map of positions and strings.
+     */
     public static Map<Position, String> getPathToAllTargets(int[][] matrix, List<Position> restrictNode, Position start,
             ArrayList<Position> targets) {
         Map<Position, String> result = new HashMap<>();

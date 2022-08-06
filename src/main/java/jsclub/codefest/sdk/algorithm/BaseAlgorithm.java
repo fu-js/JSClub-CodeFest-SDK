@@ -14,7 +14,7 @@ public class BaseAlgorithm {
      * @param des destination position
      * @return shortest distance
      */
-    static int manhattanDistance(Position src, Position des) {
+    public static int manhattanDistance(Position src, Position des) {
         return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
     }
 
@@ -47,8 +47,14 @@ public class BaseAlgorithm {
         return steps.toString();
     }
 
-    protected static double distanceBetweenTwoPoints(Position p1, Position p2) {
-        // return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
+    /**
+     * Given two points, return the distance between them.
+     * 
+     * @param p1 The first point
+     * @param p2 The second point
+     * @return The distance between two points.
+     */
+    public static double distanceBetweenTwoPoints(Position p1, Position p2) {
         return distanceBetweenTwoPoints(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 

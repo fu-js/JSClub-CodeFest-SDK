@@ -24,10 +24,19 @@ public class MapInfo {
     public List<Position> teleportGate = new ArrayList<>();
     public List<Position> quarantinePlace = new ArrayList<>();
 
+    /**
+     * This function returns a list of viruses
+     * 
+     * @return The list of viruses.
+     */
     public List<Viruses> getVirus() {
         return viruses;
     }
 
+    /**
+     * It takes a 2D array of integers, and based on the value of each integer, it adds the position of
+     * that integer to a list
+     */
     public void updateMapInfo() {
         int[][] mapMatrix = new int[size.rows][size.cols];
         for (int i = 0; i < size.rows; i++) {
@@ -96,26 +105,56 @@ public class MapInfo {
         return position;
     }
 
+    /**
+     * This function returns a list of players
+     * 
+     * @return The list of players.
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * This function returns a list of bombs.
+     * 
+     * @return The bombs list.
+     */
     public List<Bomb> getBombs() {
         return bombs;
     }
 
+    /**
+     * This function returns a list of spoils
+     * 
+     * @return The spoils list.
+     */
     public List<Spoil> getSpoils() {
         return spoils;
     }
 
+    /**
+     * This function returns a list of gifts
+     * 
+     * @return A list of gifts.
+     */
     public List<Gift> getGifts() {
         return gifts;
     }
 
+    /**
+     * This function returns a list of humans
+     * 
+     * @return The list of humans.
+     */
     public List<Human> getHuman() {
         return human;
     }
 
+    /**
+     * It returns a list of all the infected humans in the current human list
+     * 
+     * @return A list of infected humans.
+     */
     public List<Human> getDhuman() {
         List<Human> dhumanList = new ArrayList<>();
         if (human != null) {
@@ -128,26 +167,57 @@ public class MapInfo {
         return dhumanList;
     }
 
+    /**
+     * This function returns a list of positions that represent the walls of the maze.
+     * 
+     * @return The list of walls.
+     */
     public List<Position> getWalls() {
         return walls;
     }
 
+    /**
+     * This function returns a list of positions that are the balk
+     * 
+     * @return The list of positions of the balk.
+     */
     public List<Position> getBalk() {
         return balk;
     }
 
+    /**
+     * It returns a list of positions that are blank
+     * 
+     * @return The list of blank positions.
+     */
     public List<Position> getBlank() {
         return blank;
     }
 
+    /**
+     * It returns a list of positions
+     * 
+     * @return The list of positions.
+     */
     public List<Position> getTeleportGate() {
         return teleportGate;
     }
 
+    /**
+     * This function returns a list of positions that are the quarantine places
+     * 
+     * @return The list of positions of the quarantine places.
+     */
     public List<Position> getQuarantinePlace() {
         return quarantinePlace;
     }
 
+    /**
+     * It return the first player whose id starts with the given key
+     * 
+     * @param key The key of the player you want to get.
+     * @return The player object.
+     */
     public Player getPlayerByKey(String key) {
         Player player = null;
         if (players != null) {
@@ -161,6 +231,11 @@ public class MapInfo {
         return player;
     }
 
+    /**
+     * It returns a list of all the positions that are affected by bombs
+     * 
+     * @return A list of positions that are bombs and the effective range of the bombs.
+     */
     public List<Position> getBombList() {
         List<Position> output = new ArrayList<>();
         for (Bomb bomb : this.getBombs()) {

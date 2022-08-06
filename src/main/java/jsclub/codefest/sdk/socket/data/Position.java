@@ -1,10 +1,10 @@
 package jsclub.codefest.sdk.socket.data;
 
 public class Position {
-    private final int LEFT_POSITION = 1;
-    private final int RIGHT_POSITION = 2;
-    private final int UP_POSITION = 3;
-    private final int DOWN_POSITION = 4;
+    public static final int LEFT_POSITION = 1;
+    public static final int RIGHT_POSITION = 2;
+    public static final int UP_POSITION = 3;
+    public static final int DOWN_POSITION = 4;
 
     public int col;
     public int row;
@@ -17,6 +17,13 @@ public class Position {
         return row;
     }
 
+    /**
+     * Given a direction and a step, return the next position.
+     * 
+     * @param direction the direction of the next position
+     * @param step the number of steps to move in the given direction
+     * @return The next position in the direction of the step.
+     */
     public Position nextPosition(int direction, int step) {
         switch (direction) {
             case LEFT_POSITION:
