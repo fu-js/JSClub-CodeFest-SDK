@@ -1,9 +1,7 @@
 package jsclub.codefest.sdk.algorithm;
 
 import jsclub.codefest.sdk.constant.MapEncode;
-import jsclub.codefest.sdk.socket.data.MapInfo;
 import jsclub.codefest.sdk.socket.data.Node;
-import jsclub.codefest.sdk.socket.data.Player;
 import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
@@ -85,7 +83,7 @@ public class AStarSearch extends BaseAlgorithm{
                 // in the closed list, then no action is taken and the next Node continues to be
                 // examined;
                 if (
-                    (!n.equals(target) && !this.isValidNode(matrix, n, restrictNode))
+                    (!n.equals(target) && !isValidNode(matrix, n, restrictNode))
                     || closeList.contains(n)
                     || n.getX() > mMapWidth
                     || n.getX() < 1
