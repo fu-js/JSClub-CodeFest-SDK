@@ -1,7 +1,9 @@
 package jsclub.codefest.sdk.algorithm;
 
 import jsclub.codefest.sdk.constant.MapEncode;
+import jsclub.codefest.sdk.socket.data.MapInfo;
 import jsclub.codefest.sdk.socket.data.Node;
+import jsclub.codefest.sdk.socket.data.Player;
 import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
@@ -16,7 +18,7 @@ public class AStarSearch extends BaseAlgorithm{
      * @param end the end position of the path
      * @return A string of the steps taken to get from the start to the end.
      */
-    public String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
+    public static String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
         Node startNode = Node.createFromPosition(start);
         Node endNode = Node.createFromPosition(end);
 
@@ -40,7 +42,7 @@ public class AStarSearch extends BaseAlgorithm{
      * @param target The target Node
      * @return A stack of nodes.
      */
-    private Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
+    private static Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
         int mMapWidth = matrix.length;
         int mMapHeight = matrix[0].length;
 
@@ -141,7 +143,7 @@ public class AStarSearch extends BaseAlgorithm{
         return new Stack<>();
     }
 
-    private Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
+    private static Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
         if (n.getX() >= matrix.length || n.getX() < 0 || n.getY() >= matrix[0].length || n.getY() < 0) {
             return false;
         }
@@ -150,5 +152,14 @@ public class AStarSearch extends BaseAlgorithm{
             return false;
         }
         return !restrictNode.contains(n);
+    }
+
+    public static Map<Position, String> getPathToAllTargets(int[][] matrix, List<Position> restrictNode, Position start, ArrayList<Position> targets) {
+        Map<Position, String> result = new HashMap<>();
+        for (Position target : targets) {
+
+        }
+
+        return result;
     }
 }
