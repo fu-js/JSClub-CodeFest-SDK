@@ -19,9 +19,6 @@ public class Main {
         // Creating a new Hero object with name `player1-xxx` and game id `GameConfig.GAME_ID`.
         Hero player1 = new Hero("player1-xxx", GameConfig.GAME_ID);
 
-        // Creating a new object of AStarSearch class.
-        AStarSearch aStarSearch = new AStarSearch();
-
         Listener onTickTackListener = objects -> {
             // This is getting the game information from the server.
             GameInfo gameInfo = GameUtil.getGameInfo(objects);
@@ -33,7 +30,7 @@ public class Main {
 
             // This is the A* algorithm. It is used to find the shortest path between two points.
             List<Position> restrictPosition =  new ArrayList<Position>();
-            String path = aStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosition);
+            String path = AStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosition);
 
             // Sending the path to the server.
             player1.move(path);
