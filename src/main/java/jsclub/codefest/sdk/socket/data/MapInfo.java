@@ -96,6 +96,46 @@ public class MapInfo {
         return position;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Bomb> getBombs() {
+        return bombs;
+    }
+
+    public List<Spoil> getSpoils() {
+        return spoils;
+    }
+
+    public List<Gift> getGifts() {
+        return gifts;
+    }
+
+    public List<Human> getHuman() {
+        return human;
+    }
+
+    public List<Position> getWalls() {
+        return walls;
+    }
+
+    public List<Position> getBalk() {
+        return balk;
+    }
+
+    public List<Position> getBlank() {
+        return blank;
+    }
+
+    public List<Position> getTeleportGate() {
+        return teleportGate;
+    }
+
+    public List<Position> getQuarantinePlace() {
+        return quarantinePlace;
+    }
+
     @Override
     public String toString() {
         return new Gson().toJson(this);
