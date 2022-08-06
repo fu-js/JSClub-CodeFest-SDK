@@ -14,14 +14,16 @@ public class Dir {
     public static final String INVALID = "";
     public static final String STOP = "x";
 
-    public static final Map<String, String> MOVE_TO_STRING = new HashMap<String, String>() {{
-        put(LEFT, "LEFT");
-        put(RIGHT, "RIGHT");
-        put(UP, "UP");
-        put(DOWN, "DOWN");
-        put(DROP_BOMB, "DROP BOMB");
-        put(INVALID, "INVALID");
-    }};
+    public static final Map<String, String> MOVE_TO_STRING = new HashMap<String, String>() {
+        {
+            put(LEFT, "LEFT");
+            put(RIGHT, "RIGHT");
+            put(UP, "UP");
+            put(DOWN, "DOWN");
+            put(DROP_BOMB, "DROP BOMB");
+            put(INVALID, "INVALID");
+        }
+    };
 
     public final String direction;
 

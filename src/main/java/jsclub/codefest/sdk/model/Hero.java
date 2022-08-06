@@ -1,4 +1,5 @@
 package jsclub.codefest.sdk.model;
+
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import jsclub.codefest.sdk.constant.ServerSocketConfig;
@@ -16,7 +17,8 @@ public class Hero {
     private String playerID = "";
     private String gameID = "";
     private Socket socket;
-    private Emitter.Listener onTickTackListener = objects -> {};
+    private Emitter.Listener onTickTackListener = objects -> {
+    };
 
     public Hero(String playerID, String gameID) {
         this.playerID = playerID;
@@ -26,7 +28,8 @@ public class Hero {
     /**
      * This function sets the listener for the tick-tack event.
      * 
-     * @param onTickTackListener This is the listener that will be called when the server sends a tick or a tack.
+     * @param onTickTackListener This is the listener that will be called when the
+     *                           server sends a tick or a tack.
      */
     public void setOnTickTackListener(Emitter.Listener onTickTackListener) {
         this.onTickTackListener = onTickTackListener;
@@ -41,7 +44,8 @@ public class Hero {
     }
 
     /**
-     * It connects to the server and sets up the listeners for the events that the server will emit
+     * It connects to the server and sets up the listeners for the events that the
+     * server will emit
      * 
      * @param serverUrl The URL of the server.
      * @return A boolean value.
@@ -68,7 +72,7 @@ public class Hero {
             }
         });
         socket.on(ServerSocketConfig.TICKTACK_PLAYER, onTickTackListener);
-        socket.on(Socket.EVENT_CONNECT_ERROR, objects -> LOGGER.error("Connect Failed "+ objects[0].toString()));
+        socket.on(Socket.EVENT_CONNECT_ERROR, objects -> LOGGER.error("Connect Failed " + objects[0].toString()));
         socket.on(Socket.EVENT_DISCONNECT, objects -> LOGGER.info("{} Disconnected!", this.playerID));
 
         socket.connect();
@@ -76,7 +80,8 @@ public class Hero {
     }
 
     /**
-     *> The `move` function takes a string as an argument and emits a `DRIVE_PLAYER` event to the server with the string as the data
+     * > The `move` function takes a string as an argument and emits a
+     * `DRIVE_PLAYER` event to the server with the string as the data
      * 
      * @param step The direction to move the player.
      */

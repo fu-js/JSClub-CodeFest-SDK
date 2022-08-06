@@ -12,11 +12,12 @@ import jsclub.codefest.sdk.util.GameUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Main {
     final static String SERVER_URL = "https://codefest.jsclub.me/";
+
     public static void main(String[] args) {
-        // Creating a new Hero object with name `player1-xxx` and game id `GameConfig.GAME_ID`.
+        // Creating a new Hero object with name `player1-xxx` and game id
+        // `GameConfig.GAME_ID`.
         Hero player1 = new Hero("player1-xxx", GameConfig.GAME_ID);
 
         Listener onTickTackListener = objects -> {
@@ -28,8 +29,9 @@ public class Main {
             Position currentPosition = mapInfo.getCurrentPosition(player1);
             Position enemyPosition = mapInfo.getEnemyPosition(player1);
 
-            // This is the A* algorithm. It is used to find the shortest path between two points.
-            List<Position> restrictPosition =  new ArrayList<Position>();
+            // This is the A* algorithm. It is used to find the shortest path between two
+            // points.
+            List<Position> restrictPosition = new ArrayList<Position>();
             String path = AStarSearch.aStarSearch(mapInfo.mapMatrix, restrictPosition, currentPosition, enemyPosition);
 
             // Sending the path to the server.

@@ -32,13 +32,16 @@ public class SocketUtil {
     }
 
     /**
-     * It creates a new OkHttpClient.Builder object and sets the timeout for the connection, write and
-    * read.
-    * 
-    * @return A new OkHttpClient object.
-    */
+     * It creates a new OkHttpClient.Builder object and sets the timeout for the
+     * connection, write and
+     * read.
+     * 
+     * @return A new OkHttpClient object.
+     */
     private static OkHttpClient getHttpClientBuilder() {
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder().connectTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES).writeTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES).readTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES);
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
+                .connectTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES).writeTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES)
+                .readTimeout(TIMEOUT_IN_MINUTES, TimeUnit.MINUTES);
         return clientBuilder.build();
     }
 }

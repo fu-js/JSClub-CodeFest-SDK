@@ -11,6 +11,7 @@ import java.util.Random;
 
 public class RandomPlayer {
     final static String SERVER_URL = "https://codefest.jsclub.me/";
+
     public static String getRandomPath(int length) {
         Random rand = new Random();
 

@@ -5,15 +5,16 @@ import jsclub.codefest.sdk.socket.data.Node;
 import jsclub.codefest.sdk.socket.data.Position;
 import java.util.*;
 
-public class AStarSearch extends BaseAlgorithm{
+public class AStarSearch extends BaseAlgorithm {
     /**
-     * > Given a matrix, a list of restricted nodes, a start node and an end node, return a stack of nodes
+     * > Given a matrix, a list of restricted nodes, a start node and an end node,
+     * return a stack of nodes
      * that represents the shortest path from the start node to the end node
      * 
-     * @param matrix the matrix of the maze
+     * @param matrix       the matrix of the maze
      * @param restrictNode a list of positions that are not allowed to be visited.
-     * @param start the start position
-     * @param end the end position of the path
+     * @param start        the start position
+     * @param end          the end position of the path
      * @return A string of the steps taken to get from the start to the end.
      */
     public static String aStarSearch(int[][] matrix, List<Position> restrictNode, Position start, Position end) {
@@ -25,19 +26,23 @@ public class AStarSearch extends BaseAlgorithm{
             restrictNodeList.add(Node.createFromPosition(position));
         }
 
-        Stack<Node> steps =  aStarSearch(matrix, restrictNodeList, startNode, endNode);
+        Stack<Node> steps = aStarSearch(matrix, restrictNodeList, startNode, endNode);
         return getStepsInString(startNode, steps);
     }
 
     /**
-     * The open list is the Node that needs to be checked, and the closed list is the Node that has been
-     * checked. The open list is empty, indicating that there is no new Node to add, and there is no end
+     * The open list is the Node that needs to be checked, and the closed list is
+     * the Node that has been
+     * checked. The open list is empty, indicating that there is no new Node to add,
+     * and there is no end
      * Node in the tested Node, the path can not be found
      * 
-     * @param matrix The map matrix, which is a two-dimensional array of integers.
-     * @param restrictNode The Node that can't be passed, such as the wall, the box, the player, etc.
-     * @param start The starting point of the pathfinding
-     * @param target The target Node
+     * @param matrix       The map matrix, which is a two-dimensional array of
+     *                     integers.
+     * @param restrictNode The Node that can't be passed, such as the wall, the box,
+     *                     the player, etc.
+     * @param start        The starting point of the pathfinding
+     * @param target       The target Node
      * @return A stack of nodes.
      */
     private static Stack<Node> aStarSearch(int[][] matrix, List<Node> restrictNode, Node start, Node target) {
@@ -82,18 +87,18 @@ public class AStarSearch extends BaseAlgorithm{
                 // If the neighboring Node is not accessible or the neighboring Node is already
                 // in the closed list, then no action is taken and the next Node continues to be
                 // examined;
-                if (
-                    (!n.equals(target) && !isValidNode(matrix, n, restrictNode))
-                    || closeList.contains(n)
-                    || n.getX() > mMapWidth
-                    || n.getX() < 1
-                    || n.getY() > mMapHeight
-                    || n.getY() < 1) {
+                if ((!n.equals(target) && !isValidNode(matrix, n, restrictNode))
+                        || closeList.contains(n)
+                        || n.getX() > mMapWidth
+                        || n.getX() < 1
+                        || n.getY() > mMapHeight
+                        || n.getY() < 1) {
                     continue;
                 }
 
                 // If the neighbor is not in the open list, add the Node to the open list,
-                // and the adjacent Node'elephant father Node as the current Node, while saving the
+                // and the adjacent Node'elephant father Node as the current Node, while saving
+                // the
                 // adjacent Node G and H value, F value calculation I wrote directly in the Node
                 // class
                 if (!openList.contains(n)) {
@@ -111,7 +116,7 @@ public class AStarSearch extends BaseAlgorithm{
                         // father
                         Node node = openList.get(openList.size() - 1);
                         while (node != null
-//                                && !node.equals(playerNode)???????
+                        // && !node.equals(playerNode)???????
                         ) {
                             stack.push(node);
                             node = node.getFather();
@@ -152,7 +157,8 @@ public class AStarSearch extends BaseAlgorithm{
         return !restrictNode.contains(n);
     }
 
-    public static Map<Position, String> getPathToAllTargets(int[][] matrix, List<Position> restrictNode, Position start, ArrayList<Position> targets) {
+    public static Map<Position, String> getPathToAllTargets(int[][] matrix, List<Position> restrictNode, Position start,
+            ArrayList<Position> targets) {
         Map<Position, String> result = new HashMap<>();
         for (Position target : targets) {
             String path = aStarSearch(matrix, restrictNode, start, target);

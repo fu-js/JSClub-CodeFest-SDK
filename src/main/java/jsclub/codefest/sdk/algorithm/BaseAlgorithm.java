@@ -9,6 +9,7 @@ import java.util.Stack;
 public class BaseAlgorithm {
     /**
      * Calculate Manhattan distance
+     * 
      * @param src source position
      * @param des destination position
      * @return shortest distance
@@ -16,6 +17,7 @@ public class BaseAlgorithm {
     static int manhattanDistance(Position src, Position des) {
         return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
     }
+
     static String getStepsInString(Node first, Stack<Node> path) {
         StringBuilder steps = new StringBuilder();
         Node previousStep = first;
@@ -44,8 +46,9 @@ public class BaseAlgorithm {
         }
         return steps.toString();
     }
+
     protected static double distanceBetweenTwoPoints(Position p1, Position p2) {
-        //return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
+        // return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
         return distanceBetweenTwoPoints(p1.getX(), p1.getY(), p2.getX(), p2.getY());
     }
 
