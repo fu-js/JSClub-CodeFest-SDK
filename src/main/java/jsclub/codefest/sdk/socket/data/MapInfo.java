@@ -116,6 +116,18 @@ public class MapInfo {
         return human;
     }
 
+    public List<Human> getDhuman() {
+        List<Human> dhumanList = new ArrayList<>();
+        if (human != null) {
+            for (Human dhuman : human) {
+                if (dhuman.infected) {
+                    dhumanList.add(dhuman);
+                }
+            }
+        }
+        return dhumanList;
+    }
+
     public List<Position> getWalls() {
         return walls;
     }
