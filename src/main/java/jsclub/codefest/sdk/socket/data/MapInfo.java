@@ -170,13 +170,6 @@ public class MapInfo {
                 for (int p = 1; p <= player.power; p++) {
                     Position effBomb = bomb.nextPosition(d, p);
                     output.add(effBomb);
-
-                    if (this.walls.contains(effBomb) || (this.balk.contains(effBomb))) {
-                        if (this.balk.contains(effBomb))
-                            ;
-                        // remove box o node nay
-                        break;
-                    }
                 }
             }
         }
