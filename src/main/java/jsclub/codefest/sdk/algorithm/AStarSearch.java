@@ -147,10 +147,9 @@ public class AStarSearch extends BaseAlgorithm {
     }
 
     private static Boolean isValidNode(int[][] matrix, Node n, List<Node> restrictNode) {
-        if (n.getX() >= matrix.length || n.getX() < 0 || n.getY() >= matrix[0].length || n.getY() < 0) {
-            return false;
-        }
-
+        // If the neighboring Node is not accessible or the neighboring Node is already
+        // in the closed list, then no action is taken and the next Node continues to be
+        // examined;
         if (matrix[n.getX()][n.getY()] == MapEncode.WALL) {
             return false;
         }
