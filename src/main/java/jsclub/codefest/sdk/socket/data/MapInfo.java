@@ -35,22 +35,22 @@ public class MapInfo {
             for (int j = 0; j < size.cols; j++) {
                 switch (mapMatrix[i][j]) {
                     case MapEncode.ROAD:
-                        blank.add(new Position(j,i));
+                        blank.add(new Position(j, i));
                         break;
                     case MapEncode.WALL:
-                        walls.add(new Position(j,i));
+                        walls.add(new Position(j, i));
                         break;
                     case MapEncode.BALK:
-                        balk.add(new Position(j,i));
+                        balk.add(new Position(j, i));
                         break;
                     case MapEncode.TELEPORT_GATE:
-                        teleportGate.add(new Position(j,i));
+                        teleportGate.add(new Position(j, i));
                         break;
                     case MapEncode.QUARANTINE_PLACE:
-                        quarantinePlace.add(new Position(j,i));
+                        quarantinePlace.add(new Position(j, i));
                         break;
                     default:
-                        walls.add(new Position(j,i));
+                        walls.add(new Position(j, i));
                         break;
                 }
             }
@@ -146,6 +146,41 @@ public class MapInfo {
 
     public List<Position> getQuarantinePlace() {
         return quarantinePlace;
+    }
+
+    public Player getPlayerByKey(String key) {
+        Player player = null;
+        if (players != null) {
+            for (Player p : players) {
+                if (key.startsWith(p.id)) {
+                    player = p;
+                    break;
+                }
+            }
+        }
+        return player;
+    }
+
+    public List<Position> getBombList() {
+        List<Position> output = new ArrayList<>();
+        for (Bomb bomb : this.getBombs()) {
+            output.add(bomb);
+            Player player = getPlayerByKey(bomb.playerId);
+            for (int d = 1; d < 5; d++) {
+                for (int p = 1; p <= player.power; p++) {
+                    Position effBomb = bomb.nextPosition(d, p);
+                    output.add(effBomb);
+                    
+                    if (this.walls.contains(effBomb) || (this.balk.contains(effBomb))) {
+                        if (this.balk.contains(effBomb))
+                            ;
+                        // remove box o node nay
+                        break;
+                    }
+                }
+            }
+        }
+        return output;
     }
 
     @Override

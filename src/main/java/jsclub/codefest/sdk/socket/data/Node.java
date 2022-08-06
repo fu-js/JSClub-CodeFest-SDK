@@ -1,8 +1,8 @@
 package jsclub.codefest.sdk.socket.data;
 
-public class Node extends Position{
-    private int G =0;
-    private int H =0;
+public class Node extends Position {
+    private int G = 0;
+    private int H = 0;
     public Node father;
     public double V = 1;
 
@@ -10,20 +10,24 @@ public class Node extends Position{
         super(x, y);
     }
 
-    public int getF(){
-        return G+H;
+    public int getF() {
+        return G + H;
     }
-    public int getG(){
+
+    public int getG() {
         return G;
     }
-    public void setG(int g){
+
+    public void setG(int g) {
         G = g;
     }
-    public int getH(){
+
+    public int getH() {
         return H;
     }
-    public void setH(int h){
-        H =h;
+
+    public void setH(int h) {
+        H = h;
     }
 
     public void setV(double v) {
@@ -34,33 +38,38 @@ public class Node extends Position{
         return V;
     }
 
-    public Node getFather(){
+    public Node getFather() {
         return father;
     }
-    public void setFather(Node father){
+
+    public void setFather(Node father) {
         this.father = father;
     }
-    public int getX(){
+
+    public int getX() {
         return col;
     }
+
     public void setX(int x) {
         this.col = x;
     }
+
     public int getY() {
         return row;
     }
+
     public void setY(int y) {
         this.row = y;
     }
 
-    public String toString(){
-        return col +"-"+ row;
+    public String toString() {
+        return col + "-" + row;
     }
 
-    public boolean equals(Object obj){
-        if(this == obj)
+    public boolean equals(Object obj) {
+        if (this == obj)
             return true;
-        if(obj instanceof Node){
+        if (obj instanceof Node) {
             Node antherNode = (Node) obj;
             return this.col == antherNode.col && this.row == antherNode.row;
         }
@@ -68,19 +77,19 @@ public class Node extends Position{
     }
 
     public Node leftPosition(int step) {
-        return new Node(col - step,row);
+        return new Node(col - step, row);
     }
 
     public Node rightPosition(int step) {
-        return new Node(col + step,row);
+        return new Node(col + step, row);
     }
 
     public Node upPosition(int step) {
-        return new Node(col,row - step);
+        return new Node(col, row - step);
     }
 
     public Node downPosition(int step) {
-        return new Node(col,row + step);
+        return new Node(col, row + step);
     }
 
     public static Node createFromPosition(Position position) {
