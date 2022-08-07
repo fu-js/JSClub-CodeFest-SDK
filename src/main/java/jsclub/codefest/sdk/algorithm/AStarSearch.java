@@ -89,9 +89,9 @@ public class AStarSearch extends BaseAlgorithm {
                 // examined;
                 if ((!n.equals(target) && !isValidNode(matrix, n, restrictNode))
                         || closeList.contains(n)
-                        || n.getX() > mMapWidth
+                        || n.getX() > mMapHeight
                         || n.getX() < 1
-                        || n.getY() > mMapHeight
+                        || n.getY() > mMapWidth
                         || n.getY() < 1) {
                     continue;
                 }
