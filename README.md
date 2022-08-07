@@ -19,11 +19,14 @@ Các chức năng chính:
 - Cũng cấp thuật toán tìm đường (A* Search).
 
 ## Requirements
+- JDK 11
 
 ## Installation
+Bạn có thể tải file Jar của SDK ở phần [Release](https://github.com/DAN3002/JSClub-CodeFest-SDK/releases), hãy tải bản mới nhất của SDK và cài đặt vào Project của bạn.
 
 ## How to start
+Sau khi cài đặt thành công file Jar, bạn hãy tham khảo [Tài liệu]() để có thể bắt đầu sử dụng SDK.
 
-## Issue
-
-## Contributing
+## Issues
+Trước khi báo lỗi vui lòng đọc trang [những vấn đề thường gặp]() và tìm vấn đề của mình ở trong đó.
+Nếu trang phía trên không giải quyết vấn đề của bạn, vui lòng báo lỗi [tại đây]()
