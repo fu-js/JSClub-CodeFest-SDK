@@ -46,7 +46,7 @@ public class Node extends Position {
         this.father = father;
     }
 
-    public int getX() {
+    public int getCol() {
         return col;
     }
 
@@ -54,7 +54,7 @@ public class Node extends Position {
         this.col = x;
     }
 
-    public int getY() {
+    public int getRow() {
         return row;
     }
 

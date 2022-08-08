@@ -15,28 +15,28 @@ public class BaseAlgorithm {
      * @return shortest distance
      */
     public static int manhattanDistance(Position src, Position des) {
-        return Math.abs(src.getX() - des.getX()) + Math.abs(src.getY() - des.getY());
+        return Math.abs(src.getCol() - des.getCol()) + Math.abs(src.getRow() - des.getRow());
     }
 
-    static String getStepsInString(Node first, Stack<Node> path) {
+    protected static String getStepsInString(Node first, Stack<Node> path) {
         StringBuilder steps = new StringBuilder();
         Node previousStep = first;
         int size = path.size();
         for (int i = 0; i <= size; i++) {
             if (path.size() > 0) {
                 Node nextStep = path.pop();
-                int x = nextStep.getX();
-                int y = nextStep.getY();
-                if (x > previousStep.getX() && y == previousStep.getY()) {
+                int x = nextStep.getCol();
+                int y = nextStep.getRow();
+                if (x > previousStep.getCol() && y == previousStep.getRow()) {
                     steps.append(Dir.RIGHT);
                 }
-                if (x < previousStep.getX() && y == previousStep.getY()) {
+                if (x < previousStep.getCol() && y == previousStep.getRow()) {
                     steps.append(Dir.LEFT);
                 }
-                if (x == previousStep.getX() && y > previousStep.getY()) {
+                if (x == previousStep.getCol() && y > previousStep.getRow()) {
                     steps.append(Dir.DOWN);
                 }
-                if (x == previousStep.getX() && y < previousStep.getY()) {
+                if (x == previousStep.getCol() && y < previousStep.getRow()) {
                     steps.append(Dir.UP);
                 }
                 previousStep = nextStep;
@@ -55,7 +55,7 @@ public class BaseAlgorithm {
      * @return The distance between two points.
      */
     public static double distanceBetweenTwoPoints(Position p1, Position p2) {
-        return distanceBetweenTwoPoints(p1.getX(), p1.getY(), p2.getX(), p2.getY());
+        return distanceBetweenTwoPoints(p1.getCol(), p1.getRow(), p2.getCol(), p2.getRow());
     }
 
     private static double distanceBetweenTwoPoints(int x1, int y1, int x2, int y2) {

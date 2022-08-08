@@ -6,14 +6,14 @@ public class Position {
     public static final int UP_POSITION = 3;
     public static final int DOWN_POSITION = 4;
 
-    public int col;
-    public int row;
+    protected int col;
+    protected int row;
 
-    public int getX() {
+    public int getCol() {
         return col;
     }
 
-    public int getY() {
+    public int getRow() {
         return row;
     }
 
