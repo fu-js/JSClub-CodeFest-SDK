@@ -150,7 +150,7 @@ public class AStarSearch extends BaseAlgorithm {
         // If the neighboring Node is not accessible or the neighboring Node is already
         // in the closed list, then no action is taken and the next Node continues to be
         // examined;
-        if (matrix[n.getCol()][n.getRow()] == MapEncode.WALL) {
+        if (matrix[n.getRow()][n.getCol()] == MapEncode.WALL) {
             return false;
         }
         return !restrictNode.contains(n);
