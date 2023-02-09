@@ -30,3 +30,6 @@ Sau khi cài đặt thành công file Jar, bạn hãy tham khảo [Tài liệu](
 ## Issues
 Trước khi báo lỗi vui lòng đọc trang [Những vấn đề thường gặp](https://github.com/DAN3002/JSClub-CodeFest-SDK/wiki/Common-Issues) và tìm vấn đề của mình ở trong đó.
 Nếu trang phía trên không giải quyết vấn đề của bạn, vui lòng báo lỗi [tại đây](https://github.com/DAN3002/JSClub-CodeFest-SDK/issues)
+
+## Author 
+- [DAN3002](https://github.com/DAN3002).
